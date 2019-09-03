@@ -11,8 +11,11 @@
         :$[yr in lyr; 1b;'"Please provide year in the range of ",(string first lyr)," and ",(string last lyr)];
     };
 
-    //check for dates in s for yyyy./-mm./-dd format
-    dts:"D"$dts:(2 sublist(" "vs (ssr[" "sv (tm where (tm:(tm where (tm:(" "vs s))like "20[0-9][0-9][./-][0-9][0-9][./-][0-9][0-9]")) like "*[./-]*");"[./-]";"."])));
+    // Support dates for yyyy./-mm./-dd format
+    dts:"D"$dts:(2 sublist(" "vs (ssr[" "sv (tm where (tm:(tm where (tm:(" "vs s))like "20[0-9][0-9][./-][0-1][0-9][./-][0-3][0-9]")) like "*[./-]*");"[./-]";"."])));
+
+    // Support dates for mm./-dd./-yyyy format
+    if[first null dts; dts:"D"$dts:(2 sublist(" "vs (ssr[" "sv (tm where (tm:(tm where (tm:(" "vs s))like "[0-9][./-][0-3][0-9][./-]20[0-9][0-9][0-1]")) like "*[./-]*");"[./-]";"."])))];
 
     if[first not null dts;
         [sd:first dts; /- from date
@@ -20,21 +23,24 @@
         //if from and to date are parsed then return it
         if[1b~first (@[inyc;`year$sd;{x}],@[inyc;`year$ed;{x}]);:sd,ed]]];
 
-
-
-
-    inbm:{[s] /- ingm -> inner function by month
+        // Support dates with months name, if year is not given then current year will be considered
         lmn:("January";"February";"March";"April";"May";"June";"July";"August";"September";"October";"November";"December"); /- lmn -> list months
-        lmn:(lmn, 3#/:lmn);
-        mn: first tm where (tm:" " vs s) in (lmn, 3#/:lmn); / get month from string
-        yr: first tm where (tm:" " vs s) like "20[1-0][0-9]"; / get year from string
+        lmn:lmn, 3#/:lmn;
+        mn: first tm where (tm:" " vs s) in lmn; / get month from string
+        yr: first tm where (tm:" " vs s) like "20[0-9][0-9]"; / get year from string
         @[inyc;yr;{x}];
-        if[mn in lmn; mn:$[0j~(tm:((lmn?mn)+1)mod 12);12;tm]];
-        $[mn in 1+til 12;
-            [if[mn in 1+til 9;mn:"0",string mn];
-            if[0h~type yr;yr:string `year$.z.d];
-            sd:yr,".",mn,".","01";
-            :("D"$sd), (-1+"d"$1+"m"$"D"$sd)]; / start and end date
-            '"Please provide month in the form of Jan or January or with date like 2019.01.01 to 2019.01.31"];
-        };
+        if[not 0h~type mn;
+            if[mn in lmn; mn:$[0j~(tm:((lmn?mn)+1)mod 12);12;tm]];
+            $[mn in 1+til 12;
+                [$[mn in 1+til 9;mn:"0",string mn;mn:string mn];
+                if[0h~type yr;yr:string `year$.z.d];
+                sd:yr,".",mn,".","01";
+                :("D"$sd), (-1+"d"$1+"m"$"D"$sd)]; / start and end date
+            '"Please provide month in the form of Jan or January or with date like 2019.01.01 to 2019.01.31"]];
+    :0b;
  }
+
+.utils.pq:{[s] /- pq -> function to parse question
+    pl:.utils.cp[s]; /- pl --> period list
+    :$[0b~pl;.da.co[s];(1b;string pl)]
+  }
