@@ -1,23 +1,4 @@
-<!doctype html>
-<html>
-<head>
-    <title>Chatu</title>
-    <style>
-        /* define some CSS styling on page elements */
-        #txtInput {width: 85%; height: 60px; float:left; padding: 10px; margin-top: 10px;}
-        #cmdInput {margin-left: 10px; width:10%; height:80px; font-weight: bold; margin-top: 10px;}
-        #txtOutput {
-            width: 96%; height: 300px; font-family: "Courier New"; padding: 10px;
-            border: 1px solid gray; margin-top: 10px; overflow:auto;
-        }
-    </style>
-</head>
-<body>
-<div id="txtOutput"></div>
-<textarea id="txtInput"></textarea>
-<button id="cmdInput" onclick="send();">Go</button>
-</body>
-<script>
+
     var ws, cmd = "";
     var input=document.getElementById("txtInput");
     var output=document.getElementById("txtOutput");
@@ -54,7 +35,7 @@
                 /* if not an object, then message must have simple data structure*/
                 outputHTML = data;
                 };
-            output.innerHTML = "<p align='right' margin-top='0.25em' margin-bottom='0.25em'>" + cmd + "</p>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = cmd + "<hr color='#F5FDFF' size='1px'>" + outputHTML + "<hr color='#F5FDFF' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
@@ -75,7 +56,7 @@
     }
     function generateTableHTML(data){
         /* we will iterate through the object wrapping it in the HTML table tags */
-        var tableHTML = '<table border="1" bordercolor="#000000" bgcolor="F5FDFF" cellpadding="3px"><tr>';
+        var tableHTML = '<table border="1" bordercolor="#000000" bgcolor="F5FDFF"><tr>';
         for (var x in data[0]) {
             /* loop through the keys to create the table headers */
             tableHTML += '<th>' + x + '</th>';
@@ -93,5 +74,3 @@
         return tableHTML;
     }
     connect(); //call the connect function
-</script>
-</html>
