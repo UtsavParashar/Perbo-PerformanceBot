@@ -1,4 +1,4 @@
-
+<script>
     var ws, cmd = "";
     var input=document.getElementById("txtInput");
     var output=document.getElementById("txtOutput");
@@ -35,7 +35,7 @@
                 /* if not an object, then message must have simple data structure*/
                 outputHTML = data;
                 };
-            output.innerHTML = cmd + "<hr color='#F5FDFF' size='1px'>" + outputHTML + "<hr color='#F5FDFF' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<p align='right' margin-top='0.25em' margin-bottom='0.25em'>" + cmd + "</p>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
@@ -56,7 +56,7 @@
     }
     function generateTableHTML(data){
         /* we will iterate through the object wrapping it in the HTML table tags */
-        var tableHTML = '<table border="1" bordercolor="#000000" bgcolor="F5FDFF"><tr>';
+        var tableHTML = '<table border="1" bordercolor="#000000" bgcolor="F5FDFF" cellpadding="3px"><tr>';
         for (var x in data[0]) {
             /* loop through the keys to create the table headers */
             tableHTML += '<th>' + x + '</th>';
@@ -74,3 +74,4 @@
         return tableHTML;
     }
     connect(); //call the connect function
+</script>

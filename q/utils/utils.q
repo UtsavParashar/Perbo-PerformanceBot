@@ -37,6 +37,16 @@
                 sd:yr,".",mn,".","01";
                 :("D"$sd), (-1+"d"$1+"m"$"D"$sd)]; / start and end date
             '"Please provide month in the form of Jan or January or with date like 2019.01.01 to 2019.01.31"]];
+
+
+    // support dates for jargons
+    inpbd:{x-1^1 2 3 x mod 7}.z.d; / inner function previous business day
+    ddj:(`pbd`wtd`mtd`qtd`ytd`lastweek`lastmonth`lastqtr)!((inpbd;inpbd);(`week$.z.d-1;.z.d-1);
+            ("d"$"m"$.z.d;.z.d-1);("d"$3 xbar `month$.z.d;.z.d-1);("D"$string[`year$.z.d],".01.01";             .z.d-1);(`week$.z.d-7;4+`week$.z.d-7);("d"$-1+"m"$.z.d;-1+"d"$"m"$.z.d);
+                ("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d)); /- ddj --> dictionary date jargons
+
+
+
     :0b;
  }
 
