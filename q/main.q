@@ -2,7 +2,7 @@
 
 /- Conversation
 .da.name:"chatu";
-.da.co:{[q] /- question
+.da.co:{[q] /- question /- co -> conversation
 /- Greetings - GoodBye
     ingco:{[q] /- ingco -> inner function greetings conversations
     name:.da.name;
