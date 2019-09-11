@@ -16,6 +16,7 @@
         [sd:first dts; /- from date
         ed:last dts; /- to date
         if[sd>ed;[sd:sd+ed;ed:sd-ed;sd:sd-ed]];
+        if[366<ed-sd;'"Difference between start and end data is greater than one year"];
         //if from and to date are parsed then return it
         if[1b~first (@[inyc;string `year$sd;{'x}]);:sd,ed]]];
 
@@ -41,9 +42,24 @@
                 ("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d)); /- ddj --> dictionary date jargons
      if[1b~1b in (tm:vs[" ";s]) in key ddj;:ddj[first tm where (tm:vs[" ";s]) in key ddj]];
 
+     // support date jargons with spaces
+     if[1b in raze ("previous";"last"){11b~1b in/:vs[" ";s] like/:(x;y)}\:/:
+        ("day";"week";"month";"quarter";"qtr");
+         [inf:{[d;s]1b in vs[" ";s]like d};
+             if[inf["day";s];:(inpbd;inpbd)];
+             if[inf["week";s];:(`week$.z.d-7;4+`week$.z.d-7)];
+             if[inf["month";s];:("d"$-1+"m"$.z.d;-1+"d"$"m"$.z.d)];
+             lsqtr:("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d);
+             if[inf["qtr";s];:lsqtr];
+             if[inf["quarter";s];:lsqtr];
+          ]];
+
 
     :0b;
  };
+
+// Weekdays support
+.utils.weekdays:{x where 1<x mod 7};
 
 .utils.pq:{[s] /- pq -> function to parse question
     pl:.utils.cp[s]; /- pl --> period list
