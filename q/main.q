@@ -19,8 +19,8 @@
 
     q:lower trim ssr[q;" ";""];
     inrg:{rand count x}; /- inrg -> inner function random generator
-    :$[q in (lg,(lg cross "!"));(1b; (lgr[inrg[lgr]]),(lrq[inrg[lga]]));
-       q in (lgq,(raze ((raze (lg{x,y}\:/:({x}@'(",";"!";"")))),\:/:(lgq)))); (1b; (lga[inrg[lga]]),(lrq[inrg[lga]]));
+    :$[q in (lg,(lg cross "!"));(lgr[inrg[lgr]],(lrq[inrg[lga]]));
+       q in (lgq,(raze ((raze (lg{x,y}\:/:({x}@'(",";"!";"")))),\:/:(lgq)))); (lga[inrg[lga]]),(lrq[inrg[lga]]);
       (0b;"")];
     };
 
@@ -49,7 +49,7 @@
     :$[ 1b~((res:.da.aq[q])[0]); res[1];
         /1b~((res:.da.er[q])[0]); res[1];
         /1b~((res:.da.pv[q])[0]); res[1];
-         1b~((res:.da.co[q])[0]); res[1];
+         /1b~((res:.da.co[q])[0]); res[1];
         value q];
   };
 
