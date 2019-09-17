@@ -45,7 +45,7 @@
 
 /- main function
 .da.mf:{[q]
-//TODO optimize this to one condition --> :$[ 1b~((res:{[f;q] f[q]}@'([.da.aq;q];[.da.er;q];[.da.pv;q];[.da.co;q]))[0]); res[1]; value q];
+    q:ssr[q;"[\n\t\r]";" "];
     :$[ 1b~((res:.da.aq[q])[0]); res[1];
         /1b~((res:.da.er[q])[0]); res[1];
         /1b~((res:.da.pv[q])[0]); res[1];

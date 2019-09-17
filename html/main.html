@@ -59,7 +59,7 @@
                 /* if not an object, then message must have simple data structure*/
                 outputHTML = data;
                 };
-            output.innerHTML = "<p align='right' margin-top='0.25em' margin-bottom='0.25em'>" + cmd + "</p>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='background-color:lightblue; display:inline; padding:5px; border-radius:4px;' >" + cmd + "</p></div>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
@@ -68,7 +68,7 @@
             store the input command so that we can access it later
             to print in with the response
         */
-        cmd = input.value + "<br />";
+        cmd = input.value + "<br/>";
         /* send the input command across the WebSocket connection */
         ws.send(input.value);
         /*

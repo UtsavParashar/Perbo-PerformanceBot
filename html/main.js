@@ -35,7 +35,7 @@
                 /* if not an object, then message must have simple data structure*/
                 outputHTML = data;
                 };
-            output.innerHTML = "<p align='right' margin-top='0.25em' margin-bottom='0.25em'>" + cmd + "</p>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<p align='right' margin-top='0.15em' margin-bottom='0.15em' >" + cmd + "</p>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
