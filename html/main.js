@@ -2,6 +2,13 @@ var ws, cmd = "";
 var input=document.getElementById("txtInput");
 var output=document.getElementById("txtOutput");
 
+input.addEventListener("keyup", function(event) {
+   if (event.keyCode === 13) {
+    event.preventDefault();
+    send();
+   }
+ });
+
 function connect(){
     if ("WebSocket" in window) {
         ws = new WebSocket("ws://localhost:5001/");
@@ -39,14 +46,6 @@ function connect(){
             }
         } else alert("WebSockets not supported on your browser.");
     }
-
- input.addEventListener("keyup", function(event) {
-   if (event.keyCode === 13) {
-    event.preventDefault();
-    send();
-   }
- });
-
 
 function send(){
     /*
