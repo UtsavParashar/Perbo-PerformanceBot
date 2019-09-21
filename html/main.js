@@ -40,6 +40,14 @@ function connect(){
         } else alert("WebSockets not supported on your browser.");
     }
 
+ input.addEventListener("keyup", function(event) {
+   if (event.keyCode === 13) {
+    event.preventDefault();
+    send();
+   }
+ });
+
+
 function send(){
     /*
         store the input command so that we can access it later
