@@ -7,3 +7,4 @@ Generate inter company trades for Jun 2013 to July 2017
 1. if I need intercompany trades for Jun? --> Fails with ?
 2. date in June --> failing only if period is provided
 3. Text overlap between question and answer
+4. Intercompanytrades Jun --> because of uppercase I

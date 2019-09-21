@@ -42,7 +42,7 @@ function connect(){
                 /* if not an object, then message must have simple data structure*/
             outputHTML = data;
             };
-            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='background-color:lightblue; display:inline; padding:5px; border-radius:4px;' >" + cmd + "</p></div>" + outputHTML + "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='color:white; background-color:blue; display:inline; padding:5px; border-radius:4px; font-family: Calibri'; >" + cmd + "</p></div>" + "<p style='color:black; background-color:#DCDCDC; display:inline; padding:5px; border-radius:4px; font-family: Calibri';>" + outputHTML + "</p>"+ "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
