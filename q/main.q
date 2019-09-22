@@ -46,6 +46,7 @@
 /- main function
 .da.mf:{[q]
     q:ssr[q;"[\n\t\r]";" "];
+    :([] abc:`a`b`c`d`e`f; bcd:10 30 40 50 60 70);
     :$[ 1b~((res:.da.aq[q])[0]); res[1];
         /1b~((res:.da.er[q])[0]); res[1];
         /1b~((res:.da.pv[q])[0]); res[1];
