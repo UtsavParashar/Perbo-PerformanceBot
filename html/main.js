@@ -42,7 +42,7 @@ function connect(){
                 /* if not an object, then message must have simple data structure*/
             outputHTML = data;
             };
-            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='color:white; background-color:blue; display:inline; padding:5px; border-radius:4px; font-family: Calibri'; >" + cmd + "</p></div>" + "<p style='color:black; background-color:#DCDCDC; display:inline; padding:5px; border-radius:4px; font-family: Calibri';>" + outputHTML + "</p>"+ "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='color:white; background-color:#00008B; display:inline; padding:5px; border-radius:4px; font-family: Verdana; font-size:13px;' >" + cmd + "</p></div>" + "<p style='color:black; background-color:#E6E6FA; display:inline; padding:5px; border-radius:4px; font-family: Verdana; font-size:13px;'>" + outputHTML + "</p>"+ "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }
@@ -65,6 +65,7 @@ function send(){
 
 function generateTableHTML(data){
     /* we will iterate through the object wrapping it in the HTML table tags */
+
     var tableHTML = '<table border="1" bordercolor="#000000" bgcolor="F5FDFF" cellpadding="3px"><tr>';
     for (var x in data[0]) {
         /* loop through the keys to create the table headers */
@@ -83,4 +84,49 @@ function generateTableHTML(data){
     return tableHTML;
 }
 
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+        for (var j = 0; j < cols.length; j++)
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(","));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
 connect(); //call the connect function
+
+
