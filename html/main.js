@@ -74,23 +74,29 @@ function generateTableHTML(data){
         row.push(x);
     }
     tableHTML += '</tr>';
-        csv.push(row.join(","));
         csv.push("\n");
-        row=[];
+        csv.push(row.join());
+        csv.push("\n");
+        var row=[];
     for (var i = 0; i < data.length; i++) {
         /* loop through the rows, putting tags around each col value */
-        tableHTML += '<tr>';
-        for (var x in data[0]) {
-            row.push(data[i][x]);
-            tableHTML += '<td>' + data[i][x] + '</td>';
+        if(i<5){
+            tableHTML += '<tr>';
         }
-        csv.push(row.join(","));
-        row=[];
+        for (var x in data[0]) {
+            if(i<5){
+                tableHTML += '<td>' + data[i][x] + '</td>';
+            }
+            row.push(data[i][x]);
+        }
+        csv.push(row.join());
         csv.push("\n");
-        tableHTML += '</tr>';
+        var row=[];
+        if(i<5){
+            tableHTML += '</tr>';
+        }
     }
     tableHTML += '</table>';
-//    csv.push(row.join(","));
     downloadCSV(csv, "data");
     return tableHTML;
 }
