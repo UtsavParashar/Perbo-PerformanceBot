@@ -4,6 +4,10 @@
     <title>Chatu</title>
     <style>
         /* define some CSS styling on page elements */
+        div#wrap{
+            width:100%;
+            overflow:auto;
+        }
         textarea#txtInput {width: 97.5%; height: 60px; float:left; padding: 10px; margin-top: 10px;}
         div#txtOutput {
             width: 97.5%; height: 300px; font-family: "Courier New"; padding: 10px;
@@ -12,11 +16,13 @@
     </style>
 </head>
 <body>
+<div id="wrap">
 <fieldset id='heads' style="border:1; border-radius:10px">
     <legend align="center" style="color:blue">Chatu</legend>
     <div id="txtOutput"></div>
     <textarea id="txtInput" autofocus></textarea>
 </fieldset>
+</div>
 
 </body>
 <script type="text/javascript" src="main.js"></script>
