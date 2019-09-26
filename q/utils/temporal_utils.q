@@ -12,6 +12,8 @@
     // Support dates for mm./-dd./-yyyy format
     if[first null dts; dts:"D"$dts:(2 sublist(" "vs (ssr[" "sv (tm where (tm:(tm where (tm:(" "vs s))like "[0-1][0-9][./-][0-3][0-9][./-]20[0-9][0-9]")) like "*[./-]*");"[./-]";"."])))];
 
+    // for over excited users who use words jan? jun!
+    s:s except "?._!";
     if[first not null dts;
         [sd:first dts; /- from date
         ed:last dts; /- to date

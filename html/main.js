@@ -97,7 +97,7 @@ function generateTableHTML(data){
         }
     }
     tableHTML += '</table>';
-    downloadCSV(csv, "data");
+//    downloadCSV(csv, "data");
     return tableHTML;
 }
 
