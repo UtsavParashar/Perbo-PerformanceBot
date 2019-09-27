@@ -127,6 +127,15 @@ function downloadCSV(csv, filename) {
     downloadLink.click();
 }
 
+
+window.onbeforeunload = function(event) {
+    event.returnValue = "";
+};
+
+window.addEventListener("beforeunload", function(event) {
+    event.returnValue = "";
+});
+
 //function exportTableToCSV(filename) {
 //    var csv = [];
 //    var rows = document.querySelectorAll("table tr");
