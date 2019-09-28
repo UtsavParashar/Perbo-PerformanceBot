@@ -46,6 +46,7 @@
 /- main function
 .da.mf:{[q]
     q:ssr[q;"[\n\t\r]";" "];
+    q:trim q;
 //    :([] abc:`a`b`c`d`e`f`g`h`i`j; bcd:10+til 10; cde:10?`4; de:10?`5; ef:10?`8; fg:10?`8; gh:10000+til 10; hi:10000+til 10; jk:10?`8; lm:10?`8; nq:10?`8; qr:10?`8; rs:10?`8; st:10?`8; tu:10?`8);
     :$[ 1b~((res:.da.aq[q])[0]); res[1];
         /1b~((res:.da.er[q])[0]); res[1];
