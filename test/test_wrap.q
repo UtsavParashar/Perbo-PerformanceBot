@@ -1,0 +1,1 @@
+system "l ./test/test_main.q"

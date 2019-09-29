@@ -2,6 +2,7 @@ var ws, cmd = "";
 var input=document.getElementById("txtInput");
 var output=document.getElementById("txtOutput");
 
+// Submit on enter key
 input.addEventListener("keyup", function(event) {
    if (event.keyCode === 13) {
     event.preventDefault();
@@ -42,7 +43,7 @@ function connect(){
                 /* if not an object, then message must have simple data structure*/
             outputHTML = data;
             };
-            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='color:white; background-color:#00008B; display:inline; padding:5px; border-radius:4px; font-family: Verdana; font-size:13px;' >" + cmd + "</p></div>" + "<div style='width:75%; overflow:auto'><p style='color:black; background-color:#E6E6FA; display:inline; padding:5px; border-radius:4px; font-family: Verdana; font-size:13px;'>" + outputHTML + "</p></div>"+ "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
+            output.innerHTML = "<div style='text-align:right;'><p  margin-top='0.25em' margin-bottom='0.25em' style='color:white; background-color:#00008B; display:inline; padding:5px; border-radius:4px; font-family: Verdana; font-size:13px;' >" + cmd + "</p></div>" + "<div style='width:75%; overflow:auto;'><p margin-top='0.25em' margin-bottom='0.25em' style='color:black; background-color:#E6E6FA; display:inline; padding:8px; border-radius:6px; font-family: Verdana; font-size:13px;'>" + outputHTML + "</p></div>"+ "<hr color='#000000' size='1px'>" + "<br />" + output.innerHTML;
             }
         } else alert("WebSockets not supported on your browser.");
     }

@@ -13,7 +13,7 @@
     lgr:(g1;g2;g3); /- lgr -> list greeting response
     lg2:(g1,name;g2,name;g3,name);
     lg:lgr,lg2; / lg ->list greetings
-    lgq:(q1;q1,qmark; q1,g4; q1,g4,qmark;q1,g5; q1,g5,qmark; q1,g4,g5; q1,g4,g5,qmark; q1,name;q1,name,qmark;q1,g4,name; q1,g4,name,qmark; q1,g4,g5,name; q1,g4,g5,name,qmark ); /- lgq -> List greeting questions
+    lgq:(q1;q1,qmark; q1,g4; q1,g4,qmark;q1,g5; q1,g5,qmark; q1,g4,g5; q1,g4,g5,qmark; q1,name;q1,name,qmark;q1,g4,name; q1,g4,name,qmark; q1,g4,g5,name; q1,g4,g5,name,qmark; q1,g5,name; q1,g5,name,qmark); /- lgq -> List greeting questions
     lga:("Good";"I'm doing good";"Doing fine");
     lrq: (a1,qmark; a1," ",g5,qmark; a2,qmark; a2," ",g5,qmark); /-lrq -> list response question
 
