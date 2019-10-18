@@ -44,6 +44,7 @@ system "l ./q/utils/utils.q"
 .test.utils.cp.a1["week of last"; (2019.10.07;2019.10.11)];
 .test.utils.cp.a1["previous day data"; (2019.10.17;2019.10.17)];
 .test.utils.cp.a1["previous quarter data"; (2019.07.01;2019.09.30)];
+.test.utils.cp.a1["last year data"; (2018.01.01;2018.12.31)];
 
 
 

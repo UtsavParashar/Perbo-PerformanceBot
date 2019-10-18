@@ -46,7 +46,7 @@
 
      // support date jargons with spaces
      if[any{[s;x]11b~1b in/:vs[" ";s] like/:x}[s]@'raze("previous";"last"){(x;y)}\:/:
-        ("day";"week";"month";"quarter";"qtr");
+        ("day";"week";"month";"quarter";"qtr";"year");
          [inf:{[d;s]any vs[" ";s]like d};
              if[inf["day";s];:(inpbd;inpbd)];
              if[inf["week";s];:(`week$.z.d-7;4+`week$.z.d-7)];
@@ -54,6 +54,7 @@
              lsqtr:("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d); / lsqtr - last quarter
              if[inf["qtr";s];:lsqtr];
              if[inf["quarter";s];:lsqtr];
+             if[inf["year";s];:("D"$($:)[-1+`year$.z.d],".01.01"; -1+"D"$($:)[`year$.z.d],".01.01")];
           ]];
      if[any{[s;x]11b~1b in/:vs[" ";s] like/:x}[s]@'raze ("this";"current"){(x;y)}\:/:
              ("week";"month";"quarter";"qtr";"year");
