@@ -1,7 +1,7 @@
 // @param - input - string from user
 // returns - name of report; else 0b
 
-lf:{[s;l]s:lower s; :$[first in[tm:l where except[s;" _-"] like/:{"*",x,"*"}peach l;l]; tm; 0b]}; / lf- local function, tm: temporary member
+lf:{[s;l]s:lower s; :$[(*)in[tm:l(&)except[s;" _-"] like/:{"*",x,"*"}peach l;l]; tm; 0b]}; / lf- local function, tm: temporary member
 .utils.cer:{[s;pl] /- cer - check existing report
     lrl:("intercompanytrades";"fixreport";"fixreportextract"); /- lrl: report list
     if[0b~rn:lf[s;lrl];:0b]; /- report name
