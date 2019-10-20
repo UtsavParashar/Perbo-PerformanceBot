@@ -1,4 +1,5 @@
-.utils.cp:{[s] /- cp -> check period
+//**
+.da.cp:{[s] /- cp -> check period
     s:trim(_)s;
     inyc:{[yr] /- inner function year check
         yr:"I"$yr;ds:2012; /- ds -> date since
@@ -38,8 +39,7 @@
 
 
     // support dates for jargons
-    inpbd:{x-1^1 2 3 x mod 7}.z.d; / inner function previous business day
-    ddj:("pbd";"wtd";"mtd";"qtd";"ytd";"lastweek";"lastmonth";"lastqtr")!((inpbd;inpbd);(`week$.z.d-1;.z.d-1);
+    ddj:("pbd";"wtd";"mtd";"qtd";"ytd";"lastweek";"lastmonth";"lastqtr")!((.ut.inpbd;.ut.inpbd);(`week$.z.d-1;.z.d-1);
             ("d"$"m"$.z.d;.z.d-1);("d"$3 xbar `month$.z.d;.z.d-1);("D"$($:)[`year$.z.d],".01.01";             .z.d-1);(`week$.z.d-7;4+`week$.z.d-7);("d"$-1+"m"$.z.d;-1+"d"$"m"$.z.d);
                 ("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d)); /- ddj --> dictionary date jargons
      if[any (tm:vs[" ";s]) in (!)ddj;:ddj[(*)tm(&)(tm:vs[" ";s]) in(!)ddj]];
@@ -48,7 +48,7 @@
      if[any{[s;x]11b~1b in/:vs[" ";s] like/:x}[s]@'raze("previous";"last"){(x;y)}\:/:
         ("day";"week";"month";"quarter";"qtr";"year");
          [inf:{[d;s]any vs[" ";s]like d};
-             if[inf["day";s];:(inpbd;inpbd)];
+             if[inf["day";s];:(.ut.inpbd;.ut.inpbd)];
              if[inf["week";s];:(`week$.z.d-7;4+`week$.z.d-7)];
              if[inf["month";s];:("d"$-1+"m"$.z.d;-1+"d"$"m"$.z.d)];
              lsqtr:("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d); / lsqtr - last quarter
@@ -68,6 +68,3 @@
          ]];
     :0b;
  };
-
-// Weekdays support
-.utils.weekdays:{x where 1<x mod 7};
