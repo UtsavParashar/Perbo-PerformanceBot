@@ -1,5 +1,5 @@
-system "l ./q/reports/exec_reports.q"
-system "l ./q/reports/adhoc_requests.q"
+system "l /Users/utsav/repos/chatu/q/reports/exrepo.q";
+system "l /Users/utsav/repos/chatu/q/reports/adcreq.q";
 
 // @param - input - string from user
 // returns - name of report; else 0b

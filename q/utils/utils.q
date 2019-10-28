@@ -7,7 +7,7 @@
   };
 
 //*** String Utils ***//
-.ut.csl:{vs [" ";x]}; /- csl - convert string to list
+.ut.csl:{vs[" ";x]}; /- csl - convert string to list
 
 .ut.cew:{[s;w] /- cew - check exact word or list of words
     :$[(@)w;$[all{[s;w]any .ut.csl[s] like w}[s]@'w;1b;0b] ;$[any .ut.csl[s] like w;1b;0b]];

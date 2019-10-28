@@ -1,6 +1,7 @@
-system "l ./q/helper/conversation.q";
-system "l ./q/helper/temporal.q";
-system "l ./q/reports/reports.q"
+system "l /Users/utsav/repos/chatu/q/helper/conversation.q";
+system "l /Users/utsav/repos/chatu/q/helper/temporal.q";
+system "l /Users/utsav/repos/chatu/q/reports/reports.q";
+system "l /Users/utsav/repos/chatu/q/utils/utils.q";
 
 .da.name:"chatu";
 
