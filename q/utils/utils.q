@@ -1,8 +1,8 @@
 .ut.pq:{ /- pq -> function to parse question
-    pl:.da.cp[x]; /- pl --> period list
-    if[0b~pl;:.da.co[x]];
-    if[(~)0b~aq:.re.cf[x;pl];:(aq;pl)];
-    if[(~)0b~er:.re.cer[x;pl];:(er;pl)];
+    pl:.da.cp[x]; //- pl --> period list
+    $[(*)pl;[.da.sd:pl@0;.da.ed:pl@1]; :.da.co[x]];
+    if[(~)0b~aq:.re.cf[x];:(aq;pl)];
+    if[(~)0b~er:.re.cer[x];:(er;pl)];
     :pl; //TODO replace pl with 0b post testing
   };
 

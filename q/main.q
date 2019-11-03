@@ -1,9 +1,9 @@
-system "l /Users/utsav/repos/chatu/q/helper/conversation.q";
-system "l /Users/utsav/repos/chatu/q/helper/temporal.q";
-system "l /Users/utsav/repos/chatu/q/reports/reports.q";
-system "l /Users/utsav/repos/chatu/q/utils/utils.q";
+system "l /Users/utsav/Desktop/repos/chatu/q/helper/conversation.q";
+system "l /Users/utsav/Desktop/repos/chatu/q/helper/temporal.q";
+system "l /Users/utsav/Desktop/repos/chatu/q/reports/reports.q";
+system "l /Users/utsav/Desktop/repos/chatu/q/utils/utils.q";
 
-.h.HOME:"/Users/utsav/repos/chatu/html";
+.h.HOME:"/Users/utsav/Desktop/repos/chatu/html";
 
 .da.name:"chatu";
 

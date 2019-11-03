@@ -39,7 +39,7 @@
 
 
     // support dates for jargons
-    ddj:("pbd";"wtd";"mtd";"qtd";"ytd";"lastweek";"lastmonth";"lastqtr")!((.ut.inpbd;.ut.inpbd);(`week$.z.d-1;.z.d-1);
+    ddj:("pbd";"yesterday";"wtd";"mtd";"qtd";"ytd";"lastweek";"lastmonth";"lastqtr")!((.ut.inpbd;.ut.inpbd);(.ut.inpbd;.ut.inpbd);(`week$.z.d-1;.z.d-1);
             ("d"$"m"$.z.d;.z.d-1);("d"$3 xbar `month$.z.d;.z.d-1);("D"$($:)[`year$.z.d],".01.01";             .z.d-1);(`week$.z.d-7;4+`week$.z.d-7);("d"$-1+"m"$.z.d;-1+"d"$"m"$.z.d);
                 ("d"$-3+3 xbar "m"$.z.d;-1+"d"$3 xbar "m"$.z.d)); /- ddj --> dictionary date jargons
      if[any (tm:vs[" ";s]) in (!)ddj;:ddj[(*)tm(&)(tm:vs[" ";s]) in(!)ddj]];
