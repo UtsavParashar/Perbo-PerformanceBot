@@ -16,7 +16,7 @@ system "l ./q/main.q"
  };
 
 
-.test.da.co.a1@'("hi";"hey";"hello");
+.test.da.co.a1@'a1:("hi";"hey";"hello");
 .test.da.co.a2@'a2:("how are you";"how are you?";"how are you doing";"how are you doing?";"how are you ",.da.name; "how are you ",.da.name,"?";"how are you doing ",.da.name; "how are you doing ",.da.name,"?"; "how are you doing today ",.da.name; "how are you doing today ",.da.name,"?"; "how are you today"; "how are you today?"; "how are you today ",.da.name; "how are you today",.da.name,"?");
-.test.da.co.a3@'(,/)((("hi";"hey";"hello") cross (",";"!";"")){x,y}\:/:a2);
+.test.da.co.a3@'(,/)((a1 cross (",";"!";"")){x,y}\:/:a2);
 
